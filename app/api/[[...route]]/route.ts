@@ -5,10 +5,19 @@ import { handle } from "hono/vercel";
 import { z } from "zod";
 import authors from "./authors";
 import books from "./books";
+import accounts from "./accounts";
+import { HTTPException } from "hono/http-exception";
 
 export const runtime = "edge";
 
 const app = new Hono().basePath("/api");
+
+app.onError((err, c) => {
+  if (err instanceof HTTPException) {
+    return err.getResponse();
+  }
+  return c.json({ error: "Internal Errors" }, 500);
+});
 
 const schema = z.object({ test: z.string() });
 
@@ -35,5 +44,9 @@ app
     });
   });
 
+const routes = app.route("/accounts", accounts);
+
 export const GET = handle(app);
 export const POST = handle(app);
+
+export type AppType = typeof routes;
