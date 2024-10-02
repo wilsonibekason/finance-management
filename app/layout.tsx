@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import QueryProviders from "@/provider/query-provider";
 import { SheetProvider } from "@/provider/sheet-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,6 +35,7 @@ export default function RootLayout({
         >
           <QueryProviders>
             <SheetProvider />
+            <Toaster />
             {children}
           </QueryProviders>
         </body>

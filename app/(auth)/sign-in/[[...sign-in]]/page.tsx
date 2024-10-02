@@ -24,7 +24,14 @@ const Page = () => {
           </div>
         </div>
         <div className="h-full bg-blue-600 hidden lg:flex justify-center items-center">
-          <Image src={"./logo.svg"} width={100} height={100} alt="logo" />
+          <Image
+            src={
+              "https://res.cloudinary.com/dpnsseamh/image/upload/v1727358661/logoipsum-327_bdc9ac.svg"
+            }
+            width={40}
+            height={40}
+            alt="logo"
+          />
         </div>
       </div>
     </>
